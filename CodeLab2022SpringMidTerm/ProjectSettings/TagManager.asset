@@ -6,6 +6,10 @@ TagManager:
   tags:
   - ground
   - bullet
+  - platform
+  - special bullet
+  - shield
+  - items
   layers:
   - Default
   - TransparentFX
@@ -13,10 +17,10 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - special bullet
+  - platform
+  - player
+  - shield
   - 
   - 
   - 

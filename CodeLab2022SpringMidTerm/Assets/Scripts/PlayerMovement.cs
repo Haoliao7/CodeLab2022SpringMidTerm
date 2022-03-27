@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
             newPos.x += speed * Time.deltaTime;// Time.deltatime = times between two frames
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false) // press space to jump, if players are in the sky, don't let them jump again or they will just fly away
+        if ((Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.W)) && isJumping == false) // press space or W to jump, if players are in the sky, don't let them jump again or they will just fly away
         {
             isJumping = true; // cannot double jump
             rb.AddForce(new Vector2(0, jumpForce));
@@ -45,9 +45,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "ground")
+        if (collision.gameObject.tag == "ground" || collision.gameObject.tag == "platform")
         {
             isJumping = false; // if collide with ground, players can jump again
+        }
+
+        if(collision.gameObject.tag == "bullet")
+        {
+            GameManager.lose = true;// if collide with a bullet, player lose
         }
 
     }
